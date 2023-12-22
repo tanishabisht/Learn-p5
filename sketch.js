@@ -19,7 +19,8 @@ function draw() {
     background(isAM() ? '#EDE7E3' : '#2B303A');
 
     let t = new Date();
-    let currHour = t.getHours();
+    let origHour = t.getHours();
+    let currHour = t.getHours() > 12 ? t.getHours() - 12 : t.getHours();
     let currMin = t.getMinutes();
     let currSec = t.getSeconds();
 
@@ -29,7 +30,7 @@ function draw() {
     fill(255);
     textSize(16);
     textAlign(RIGHT, BOTTOM);
-    text(nf(currHour, 2) + ':' + nf(currMin, 2) + ':' + nf(currSec, 2), width - 10, height - 10);
+    text(nf(origHour, 2) + ':' + nf(currMin, 2) + ':' + nf(currSec, 2), width - 10, height - 10);
 }
 
 function createParticles() {
